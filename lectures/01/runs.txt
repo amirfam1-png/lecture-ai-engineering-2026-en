@@ -1,0 +1,80 @@
+===== gemini-3.5-flash-lite | run 1 =====
+[model] gemini-3.5-flash-lite
+[question] What are the 3 homework levels in the AIE2026 course?
+
+I do not have access to specific information about the "AIE2026 course" or its homework levels, as my knowledge cutoff and available training data do not include details on this specific, potentially recent or proprietary course. 
+
+If you can provide more context or paste the relevant syllabus/course description here, I would be happy to help you find or analyze the answer!
+===== gemini-3.5-flash-lite | run 2 =====
+[model] gemini-3.5-flash-lite
+[question] What are the 3 homework levels in the AIE2026 course?
+
+I do not have access to specific information about the "AIE2026 course" or its homework levels, as my knowledge cutoff is January 2025 and this sounds like a specific, current, or proprietary course (possibly related to Artificial Intelligence in Education or a specific institution). 
+
+If you can provide the course syllabus, materials, or context, I would be happy to help you find or analyze the information!
+===== gemini-3.5-flash-lite | run 3 =====
+[model] gemini-3.5-flash-lite
+[question] What are the 3 homework levels in the AIE2026 course?
+
+I do not have access to the specific details or syllabus for the "AIE2026 course," as it is not part of my standard training data or publicly documented knowledge base. 
+
+If you can provide a snippet from your course syllabus, lecture notes, or learning management system (like Canvas or Moodle), I would be happy to help you find or summarize the information!
+===== gemini-3.8-flash | run 1 =====
+[model] gemini-3.8-flash
+[question] What are the 3 homework levels in the AIE2026 course?
+
+In the **AIE (AI Engineering Bootcamp / AI Makerspace)** curriculum, homework assignments are typically tiered into **three progressive levels** to accommodate different goals and commitment levels:
+
+---
+
+### **Level 1: Core / Baseline (Foundational)**
+* **Focus:** Comprehension and baseline implementation.
+* **Requirements:** 
+  * Complete the provided starter notebook.
+  * Fill in missing code blocks/functions.
+  * Successfully execute the baseline pipeline (e.g., loading data, building a basic RAG pipeline, or testing a specific model/API).
+  * Answer any baseline analysis or check-for-understanding questions.
+
+---
+
+### **Level 2: Extension / Experimentation (Advanced)**
+* **Focus:** Modification, optimization, and deeper engineering.
+* **Requirements:** 
+  * Extend beyond the baseline notebook.
+  * Implement alternative configurations (e.g., testing different embedding models, chunking strategies, prompt engineering techniques, or vector stores).
+  * Add automated evaluation (e.g., Ragas, TruLens, or LLM-as-a-judge) and document comparative findings/benchmarks.
+
+---
+
+### **Level 3: Deployment / Production ("Hero" Level)**
+* **Focus:** Full-stack delivery and public sharing.
+* **Requirements:** 
+  * Package the solution into an interactive user-facing application (e.g., built with **Gradio**, **Streamlit**, or **Chainlit**).
+  * Deploy the application live to a hosted platform (such as **Hugging Face Spaces** or a cloud provider).
+  * Produce a public artifact, such as a short video walkthrough, a GitHub repository with documentation, or a technical write-up/blog post.
+
+---
+
+*(Note: If you are referencing a specific university course code rather than the AI Makerspace AI Engineering Bootcamp, the tiers generally follow a similar **Basic/Pass $\rightarrow$ Intermediate/Merit $\rightarrow$ Advanced/Distinction** structure, but feel free to clarify your institution if you need an exact university-specific syllabus breakdown.)*
+===== gemini-3.8-flash | run 2 =====
+[model] gemini-3.8-flash
+[question] What are the 3 homework levels in the AIE2026 course?
+
+The model is busy (503). Wait a little and try again.
+===== gemini-3.8-flash | run 3 =====
+[model] gemini-3.8-flash
+[question] What are the 3 homework levels in the AIE2026 course?
+
+In the **AIE (AI Engineering)** course (such as those run by AI Makerspace), assignments are typically broken down into **three homework levels**:
+
+1. **Level 1: Core / Baseline**
+   * **Focus:** Completing the foundational walkthrough and guided notebook.
+   * **Goal:** Fill in code blanks, follow the core instructions, and successfully execute the baseline pipeline (e.g., building a baseline RAG pipeline, fine-tuning script, or agent).
+
+2. **Level 2: Stretch / Advanced Challenge**
+   * **Focus:** Customization and extension.
+   * **Goal:** Go beyond the base implementation by modifying components—such as testing alternative embedding models/LLMs, experimenting with different chunking/retrieval strategies, running evaluations, or ingesting custom datasets.
+
+3. **Level 3: Boss Mode / Hardcore (Production-Ready)**
+   * **Focus:** End-to-end implementation and deployment.
+   * **Goal:** Build a fully functional, production-grade application or novel solution—often requiring creating an interactive user interface (e.g., Chainlit, Streamlit), deploying the application to the cloud, or implementing an advanced architecture from scratch.
