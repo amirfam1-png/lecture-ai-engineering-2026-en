@@ -1,0 +1,28 @@
+===== user answers 'y' =====
+
+[approval needed] save_learning_log
+  lecture: 3
+  title: Agents and tools
+  content: Agent = model + loop + tools.
+Save this? [y/N]: y
+Result: Saved: learning_log/20261109-011558-lec03-agents-and-tools.md
+
+--- trace ---
+[tool call]   save_learning_log({'lecture': 3, 'title': 'Agents and tools', 'content': 'Agent = model + loop + tools.'})
+[tool return] save_learning_log -> Saved: learning_log/20261109-011558-lec03-agents-and-tools.md…
+[usage] RunUsage(input_tokens=113, output_tokens=38, requests=2, tool_calls=1)
+files: ['20261109-011558-lec03-agents-and-tools.md']
+===== user answers 'n' =====
+
+[approval needed] save_learning_log
+  lecture: 3
+  title: Agents and tools
+  content: Agent = model + loop + tools.
+Save this? [y/N]: n
+Result: The user declined to save. Do not retry; tell the user nothing was saved.
+
+--- trace ---
+[tool call]   save_learning_log({'lecture': 3, 'title': 'Agents and tools', 'content': 'Agent = model + loop + tools.'})
+[tool return] save_learning_log -> The user declined to save. Do not retry; tell the user nothing was saved.…
+[usage] RunUsage(input_tokens=125, output_tokens=50, requests=2)
+files: ['20261109-011558-lec03-agents-and-tools.md']
