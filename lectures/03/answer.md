@@ -32,7 +32,23 @@
 **Live results**
 
 <!-- LIVE:BEGIN (filled by scripts/hw03_live.py) -->
-_Not run yet. Run `uv run python scripts/hw03_live.py` in Codespaces._
+Model: `gemini-3.5-flash-lite`. Full answers and traces: [hw_runs/basic_results.md](hw_runs/basic_results.md)
+
+| Experiment | Question | Tool calls (order, args) | #calls | requests | Ends 'Lecture NN' | 'not in glossary' |
+|---|---|---|---|---|---|---|
+| E0 baseline | What are the 3 homework levels in the AIE2026 course? | search_glossary({"query": "homework levels"}) | 1 | 2 | yes | no |
+| E0 baseline | Give me one review question from Lecture 02 | make_quiz({"lecture": 2}) | 1 | 2 | yes | no |
+| E0 baseline | What is a lecNN-start tag in the AIE2026 course? | search_glossary({"query": "lecNN-start"}) | 1 | 2 | yes | no |
+| E0 baseline | What is the difference between LoRA and QLoRA? | search_glossary({"query": "LoRA"}); search_glossary({"query": "QLoRA"}) | 2 | 2 | yes | no |
+| E0 baseline | Briefly explain PEFT, LoRA, QLoRA and quantization. | search_glossary({"query": "PEFT"}); search_glossary({"query": "LoRA"}); search_glossary({"query": "QLoRA"}); search_glossary({"query": "quantization"}) | 4 | 2 | yes | no |
+| E0 baseline | What is the difference between RAG and fine-tuning? | search_glossary({"query": "RAG"}); search_glossary({"query": "fine-tuning"}); search_glossary({"query": "RAG"}) | 3 | 3 | yes | yes |
+| E1 no-always-search | What is a lecNN-start tag in the AIE2026 course? | search_glossary({"query": "lecNN-start"}) | 1 | 2 | yes | no |
+| E1 no-always-search | What is the difference between LoRA and QLoRA? | search_glossary({"query": "LoRA"}); search_glossary({"query": "QLoRA"}) | 2 | 2 | yes | no |
+| E1 no-always-search | What is the difference between RAG and fine-tuning? | search_glossary({"query": "RAG"}); search_glossary({"query": "Fine-tuning"}); search_glossary({"query": "RAG"}) | 3 | 3 | yes | no |
+| E2 several-terms | What is the difference between LoRA and QLoRA? | search_glossary({"query": "LoRA QLoRA"}) | 1 | 2 | yes | no |
+| E2 several-terms | Briefly explain PEFT, LoRA, QLoRA and quantization. | search_glossary({"query": "PEFT LoRA QLoRA quantization"}) | 1 | 2 | yes | no |
+| E2 several-terms | What is the difference between RAG and fine-tuning? | search_glossary({"query": "RAG fine-tuning"}) | 1 | 2 | yes | no |
+| E3 end-with-quiz | What is the difference between LoRA and QLoRA? | search_glossary({"query": "LoRA"}) | 1 | 2 | no | no |
 <!-- LIVE:END -->
 
 **Offline finding: what the tool returns when the model follows E2** (`hw_runs/search_offline.txt`, `search_glossary` called directly):
