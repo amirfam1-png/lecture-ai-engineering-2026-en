@@ -8,7 +8,7 @@
 - **After training**: `format_rate` = 1.000 / `content_rate` = 0.905
 - **Questions that regressed**: none.
 - **Failures remaining after training and their types** (2 of 21):
-  - *Evasion through a confirmation request despite evidence being present*: "Can I submit a format other than PDF?" The FAQ says to submit one PDF, so the answer is "no". The tuned model answered with the "not in the FAQ, confirmation needed" template and `needs_review: true`. Before training it answered "No ... PDF" correctly but with the wrong flag.
+  - *Evasion through a confirmation request despite evidence being present*: "Can I submit a format other than PDF?" The FAQ says to submit one PDF, so the answer is "no". The tuned model answered with the "not in the FAQ, confirmation needed" template and `needs_review: true`. Before training its answer text was right ("No ... PDF") but it set `needs_review: true`, so it was also scored as a fail.
   - *Assertion without evidence*: "Do office hours require an appointment?" The FAQ says nothing about appointments. The tuned model copied the office-hours sentence verbatim with `needs_review: false`. It matched on the words "office hours" and reused that FAQ item.
 - **Results of knowledge questions** (section 6, before → after):
 
@@ -91,4 +91,4 @@ My results from three training runs on two topics:
 
 All three notebooks were trained in my own Colab account on a T4 (`executed_training_myself: True`); the result files in this folder are the unmodified downloads. I used an AI assistant (Claude) to prepare the Basic and Implementation notebooks, to write the IT FAQ and questions, to operate Colab in my browser for the runs, and to draft this file. The counts above were computed from `eval_before.json` and `eval_after.json`.
 
-Files in this folder: `exercise_ep20/`, `basic_ep5/`, `impl_it_helpdesk/` (each with `result.json`, `eval_before.json`, `eval_after.json`; the first two also have `eval_before_4bit.json`), and the two homework notebooks.
+Files in this folder: `exercise_ep20/` (`result.json`, `eval_before.json`, `eval_after.json`, `eval_before_4bit.json`) and the two homework notebooks. The result files of the Basic (`basic_ep5/`) and Implementation (`impl_it_helpdesk/`) runs were checked against the numbers above but have not been uploaded yet; until they are, those two sections cannot be checked from this repository.
