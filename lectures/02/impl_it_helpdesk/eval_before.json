@@ -1,0 +1,201 @@
+{
+  "summary": {
+    "label": "before",
+    "n": 21,
+    "format_rate": 0.9523809523809523,
+    "content_rate": 0.14285714285714285,
+    "both_rate": 0.14285714285714285,
+    "seconds": 40.0
+  },
+  "rows": [
+    {
+      "question": "How do employees log in to the Wi-Fi?",
+      "raw": "{\n\"answer\": \"Employees log in to the Wi-Fi using their company email and password.\",\n\"needs_review\": true\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Tell me the SSID for employees",
+      "raw": "{\"answer\": \"None\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "What credentials do I use on the staff Wi-Fi?",
+      "raw": "{\n\"answer\": \"Staff connect to the NW-Staff Wi-Fi network using their company email and password.\",\n\"needs_review\": true\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "What do I need to log in to the VPN?",
+      "raw": "{\n\"answer\": \"You need to connect to the VPN using the CorpVPN client, using your company account plus a code from the authenticator app.\",\n\"needs_review\": true\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "What software and second factor are required for the VPN?",
+      "raw": "{\n\"answer\": \"VPN requires the CorpVPN client and a second factor (code) from the authenticator app.\",\n\"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "How do I work remotely on the company network?",
+      "raw": "{\"answer\": \"Staff can work remotely by connecting to the NW-Staff Wi-Fi network using their company email and password, or by connecting to the VPN with the CorpVPN client using their company account plus a code from the authenticator app. Passwords expire every 90 days and can be reset on the self-service portal. For urgent issues, call extension 4357. Visitors get a guest Wi-Fi access code from reception, valid for 24 hours",
+      "format_ok": false,
+      "format_reason": "json_error: JSONDecodeError",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "How do I change my password?",
+      "raw": "{\"answer\": \"Passwords expire every 90 days and can be reset on the self-service portal.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "What is the password rotation policy?",
+      "raw": "{\n\"answer\": \"Passwords expire every 90 days and can be reset on the self-service portal.\",\n\"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Is there a portal where I can reset my password myself?",
+      "raw": "{\"answer\": \"Yes, the FAQ states that passwords expire every 90 days and can be reset on the self-service portal.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "What number do I call for an urgent IT issue?",
+      "raw": "{\"answer\": \"4357\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Where do I log an IT incident?",
+      "raw": "{\"answer\": \"Open a ticket in the Helpdesk app; for urgent issues call extension 4357.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Which extension reaches IT support for urgent problems?",
+      "raw": "{\n\"answer\": \"4357\",\n\"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Who gives out guest Wi-Fi codes?",
+      "raw": "{\"answer\": \"Reception\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "My client is visiting tomorrow, how do they get online?",
+      "raw": "{\"answer\": \"Guest Wi-Fi access codes are provided by reception for visitors, valid for 24 hours.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Do guest Wi-Fi codes expire?",
+      "raw": "{\"answer\": \"Yes, guest Wi-Fi codes expire.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Is there staff Wi-Fi in the parking garage?",
+      "raw": "{\"answer\": \"No\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    },
+    {
+      "question": "Do visitors need to show ID to get a guest code?",
+      "raw": "{\"answer\": \"No, visitors do not need to show ID to get a guest Wi-Fi access code.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    },
+    {
+      "question": "What port does the VPN use?",
+      "raw": "{\"answer\": \"The FAQ does not specify the port number for the VPN connection.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    },
+    {
+      "question": "How many devices can I connect to the staff Wi-Fi?",
+      "raw": "{\"answer\": \"Staff connect to the NW-Staff Wi-Fi network using their company email and password. Visitors get a guest Wi-Fi access code from reception, valid for 24 hours.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    },
+    {
+      "question": "Can I reset a colleague's password for them?",
+      "raw": "{\"answer\": \"Yes, you can reset a colleague's password for them.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    },
+    {
+      "question": "Is the guest Wi-Fi network encrypted?",
+      "raw": "{\"answer\": \"No\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    }
+  ]
+}

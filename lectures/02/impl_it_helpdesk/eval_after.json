@@ -1,0 +1,201 @@
+{
+  "summary": {
+    "label": "after",
+    "n": 21,
+    "format_rate": 1.0,
+    "content_rate": 0.9047619047619048,
+    "both_rate": 0.9047619047619048,
+    "seconds": 40.3
+  },
+  "rows": [
+    {
+      "question": "How do employees log in to the Wi-Fi?",
+      "raw": "{\"answer\": \"Staff connect to the NW-Staff Wi-Fi network using their company email and password.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Tell me the SSID for employees",
+      "raw": "{\"answer\": \"Staff connect to the NW-Staff Wi-Fi network using their company email and password.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "What credentials do I use on the staff Wi-Fi?",
+      "raw": "{\"answer\": \"Staff connect to the NW-Staff Wi-Fi network using their company email and password.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "What do I need to log in to the VPN?",
+      "raw": "{\"answer\": \"Connect to the VPN with the CorpVPN client, using your company account plus a code from the authenticator app.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "What software and second factor are required for the VPN?",
+      "raw": "{\"answer\": \"Connect to the VPN with the CorpVPN client, using your company account plus a code from the authenticator app.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "How do I work remotely on the company network?",
+      "raw": "{\"answer\": \"Staff connect to the NW-Staff Wi-Fi network using their company email and password.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "How do I change my password?",
+      "raw": "{\"answer\": \"Passwords expire every 90 days and can be reset on the self-service portal.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "What is the password rotation policy?",
+      "raw": "{\"answer\": \"Passwords expire every 90 days and can be reset on the self-service portal.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Is there a portal where I can reset my password myself?",
+      "raw": "{\"answer\": \"Passwords expire every 90 days and can be reset on the self-service portal.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "What number do I call for an urgent IT issue?",
+      "raw": "{\"answer\": \"Report IT problems by opening a ticket in the Helpdesk app; for urgent issues call extension 4357.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Where do I log an IT incident?",
+      "raw": "{\"answer\": \"Report IT problems by opening a ticket in the Helpdesk app; for urgent issues call extension 4357.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Which extension reaches IT support for urgent problems?",
+      "raw": "{\"answer\": \"Report IT problems by opening a ticket in the Helpdesk app; for urgent issues call extension 4357.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Who gives out guest Wi-Fi codes?",
+      "raw": "{\"answer\": \"Visitors get a guest Wi-Fi access code from reception, valid for 24 hours.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "My client is visiting tomorrow, how do they get online?",
+      "raw": "{\"answer\": \"Visitors get a guest Wi-Fi access code from reception, valid for 24 hours.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Do guest Wi-Fi codes expire?",
+      "raw": "{\"answer\": \"Visitors get a guest Wi-Fi access code from reception, valid for 24 hours.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "Is there staff Wi-Fi in the parking garage?",
+      "raw": "{\"answer\": \"This FAQ does not contain that information. Confirmation from the IT helpdesk is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true
+    },
+    {
+      "question": "Do visitors need to show ID to get a guest code?",
+      "raw": "{\"answer\": \"Visitors get a guest Wi-Fi access code from reception, valid for 24 hours.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    },
+    {
+      "question": "What port does the VPN use?",
+      "raw": "{\"answer\": \"This FAQ does not contain that information. Confirmation from the IT helpdesk is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true
+    },
+    {
+      "question": "How many devices can I connect to the staff Wi-Fi?",
+      "raw": "{\"answer\": \"This FAQ does not contain that information. Confirmation from the IT helpdesk is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true
+    },
+    {
+      "question": "Can I reset a colleague's password for them?",
+      "raw": "{\"answer\": \"This FAQ does not contain that information. Confirmation from the IT helpdesk is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true
+    },
+    {
+      "question": "Is the guest Wi-Fi network encrypted?",
+      "raw": "{\"answer\": \"This FAQ does not contain that information. Confirmation from the IT helpdesk is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true
+    }
+  ]
+}
