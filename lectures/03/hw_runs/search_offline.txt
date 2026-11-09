@@ -1,0 +1,7 @@
+'LoRA'                             -> ['LoRA', 'Rank (LoRA r)', 'QLoRA']
+'QLoRA'                            -> ['QLoRA', 'LoRA']
+'LoRA QLoRA'                       -> ['LoRA', 'QLoRA']
+'LoRA, QLoRA'                      -> ['LoRA', 'QLoRA']
+'RAG'                              -> ['Token', 'Fine-tuning', 'PEFT']
+'RAG, fine-tuning'                 -> ['Fine-tuning']
+'PEFT LoRA QLoRA quantization'     -> ['PEFT', 'LoRA', 'QLoRA']
