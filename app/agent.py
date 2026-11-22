@@ -204,6 +204,23 @@ def print_trace(result, elapsed_seconds: float | None = None) -> None:
                                 print(f"      {child['content']}")
                         if not data["children"]:
                             print(f"    (Leaf page: retrieved {len(node.get('content', ''))} characters of text)")
+                elif part.tool_name == "search_materials":
+                    # Lecture 05 homework: show which pages came back and why (search hit or neighbor)
+                    data = json.loads(part.content)
+                    if data.get("error"):
+                        print(f"[tool return] {part.tool_name} -> {data['error']}")
+                    results = data.get("results", [])
+                    hits = sum(r.get("retrieval", "search") == "search" for r in results)
+                    chars = sum(len(r.get("content", "")) for r in results)
+                    print(f"[tool return] {part.tool_name} -> {len(results)} pages "
+                          f"({hits} search hits, {len(results) - hits} neighbors), {chars:,} characters")
+                    for r in results:
+                        label = r.get("citation") or f"PDF p.{r.get('page')}"
+                        if r.get("retrieval") == "neighbor":
+                            role = f"neighbor {r['offset']:+d} of {r['neighbor_of']}"
+                        else:
+                            role = f"hit, distance {r['distance']:.4f}" if "distance" in r else "hit"
+                        print(f"    - {r['page_id']} · {label} · {role}")
                 else:
                     print(f"[tool return] {part.tool_name} -> {str(part.content)[:120]}…")
     usage = result.usage

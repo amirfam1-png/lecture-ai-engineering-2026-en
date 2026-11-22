@@ -16,7 +16,7 @@ import sqlite_vec
 
 from app.config import (
     EMBEDDING_DIMENSIONS, EMBEDDING_MAX_TOKENS, EMBEDDING_MODEL,
-    RAG_DB, RAG_DOCUMENT_IDS, RAG_SOURCE, RAG_TOP_K, RAG_TREE, get_api_key,
+    RAG_DB, RAG_DOCUMENT_IDS, RAG_NEIGHBOR_PAGES, RAG_SOURCE, RAG_TOP_K, RAG_TREE, get_api_key,
     RAG_GRAPH, GRAPH_START_K, GRAPH_HOPS, GRAPH_MAX_RESULTS,
 )
 
@@ -143,6 +143,53 @@ def search(query: str) -> list[dict]:
         return [dict(row) for row in rows]
 
 
+def add_neighbor_pages(hits: list[dict], window: int, pages: list[dict] | None = None) -> list[dict]:
+    """Lecture 05 homework (Implementation): attach the pages before and after each search hit.
+
+    - Neighbors come only from the same document_id as the hit (never across lectures).
+    - Each page appears once. A page that is itself a search hit keeps its hit entry and rank.
+    - Search hits keep their order; each hit is followed by its neighbors in page order.
+    - With window > 0, every entry has retrieval = "search" or "neighbor"; neighbors also record neighbor_of and offset.
+    - With window = 0, the hits are returned unchanged.
+    """
+    if window < 0:
+        raise ValueError("The neighbor window must be 0 or more.")
+    if window == 0:
+        return hits  # Baseline: exactly what normal retrieval returns, so before/after differ only in the neighbors
+    results = [{**hit, "retrieval": "search"} for hit in hits]
+    pages = pages if pages is not None else load_pages(RAG_SOURCE)
+    by_document = defaultdict(list)
+    for page in pages:  # load_pages keeps reading order (section → page)
+        by_document[page["document_id"]].append(page)
+    position = {page["page_id"]: (page["document_id"], i)
+                for document_pages in by_document.values() for i, page in enumerate(document_pages)}
+
+    seen = {hit["page_id"] for hit in hits}
+    expanded = []
+    for hit in results:
+        expanded.append(hit)
+        if hit["page_id"] not in position:
+            continue
+        document_id, index = position[hit["page_id"]]
+        document_pages = by_document[document_id]
+        for offset in [*range(-window, 0), *range(1, window + 1)]:
+            j = index + offset
+            if not 0 <= j < len(document_pages):
+                continue
+            neighbor = document_pages[j]
+            if neighbor["page_id"] in seen:
+                continue
+            seen.add(neighbor["page_id"])
+            expanded.append({**neighbor, "retrieval": "neighbor",
+                             "neighbor_of": hit["page_id"], "offset": offset})
+    return expanded
+
+
+def search_with_neighbors(query: str, window: int = RAG_NEIGHBOR_PAGES) -> list[dict]:
+    """Vector search, then (if window > 0) add adjacent pages from the same document."""
+    return add_neighbor_pages(search(query), window)
+
+
 def search_graph(query: str) -> dict:
     """Start with vector search, then expand candidates through adjacent pages and shared terms."""
     pages = {page["page_id"]: page for page in load_pages(RAG_SOURCE)}
@@ -206,9 +253,13 @@ def run_full_context(agent, question: str, model, instructions: str, prompt_temp
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Search the lecture materials without using an agent")
     parser.add_argument("query", help="What to look up")
+    parser.add_argument("--neighbors", type=int, default=RAG_NEIGHBOR_PAGES,
+                        help="Also show N pages before and after each hit (same document). Default: AIE_RAG_NEIGHBORS or 0")
     args = parser.parse_args()
-    for i, result in enumerate(search(args.query), 1):
-        print(f"\n{'=' * 60}\nSearch result {i}\n{'=' * 60}")
+    for i, result in enumerate(search_with_neighbors(args.query, args.neighbors), 1):
+        role = ("search hit" if result.get("retrieval", "search") == "search"
+                else f"neighbor {result['offset']:+d} of {result['neighbor_of']}")
+        print(f"\n{'=' * 60}\nResult {i} ({role}) · {result['page_id']}\n{'=' * 60}")
         print(f"Lecture: {result['document_title']}")
         print(f"Section: {result['section']}")
         print(f"Title: {result['title']}")
