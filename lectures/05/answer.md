@@ -2,26 +2,28 @@
 
 ## Exercises
 
-- Answering model (`[model]` shown during execution):
-- Comparison question:
-- Target materials (also record the difference in scope between full context and the other methods):
+- Answering model (`[model]` shown during execution): `gemini-3.5-flash-lite`
+- Comparison question: "In Lecture 02, what does LoRA freeze and what does it train? What does QLoRA add?"
+- Target materials (also record the difference in scope between full context and the other methods): vector search, Tree and Graph use the 214 pages of the Lecture 01–03 main materials. Full context passes all 8 documents and 398 pages in `lectures.json` (369,491 characters), including the exercise materials and Lecture 05. Same question, one run per method. Raw traces: `lectures/05/runs/ex_*.txt` and `q1_baseline.txt` (vector search).
 
 ### Results by Method
 
 | Method | Key points and correctness of the answer | Cited pages and evidence | Time (seconds) | Input/output tokens | Model responses | Estimated generation API cost (USD) |
 |---|---|---|---|---|---|---|
-| Full context | | | | | | |
-| Vector search | | | | | | |
-| Tree | | | | | | |
-| Graph | | | | | | |
+| Full context | Correct: freezes original weights, trains two thin matrices, QLoRA adds 4-bit compression | p52 (translated p.75) | 3.25 | 95,824 / 212 | 1 | 0.029277 |
+| Vector search | Correct: freezes W, trains A and B, QLoRA 4-bit, about 1/4 memory. Mentions bitsandbytes, which p52 names only as an exercise library | pp. 51–52 (hits: p52, p51, p47, p60, p61) | 4.69 | 3,439 / 169 | 2 | 0.001454 |
+| Tree | Correct and most detailed (W frozen, A and B trained, under 1%, about 4 GB for 7B). Adds "4-bit NormalFloat", which is **not** in the materials | pp. 51–52 (opened full text of p52 only) | 10.28 | 9,442 / 367 | 5 | 0.003750 |
+| Graph | Correct: freezes W, trains A and B, QLoRA 4-bit | pp. 51–52 (seed p52 visible; trace truncates the rest) | 5.13 | 5,190 / 241 | 2 | 0.002160 |
 
-<!-- State when a method was not run or a cost was unavailable. Use a separate table for each additional question. -->
-
-- Pages found by running search alone, and what their text confirmed:
+- Pages found by running search alone, and what their text confirmed: `uv run python -m app.retrieval "LoRA QLoRA difference"` returned p52 (LoRA and QLoRA), p51 (PEFT), p60 (exercise with QLoRA), p47 (RAG vs FT for knowledge), p61 (exercise steps). p52 alone states all three facts: original W frozen, only A and B trained, QLoRA stores W at 4 bits (about one quarter of memory, about 4 GB for 7B). p51 repeats it as a comparison. p60, p61 and p47 only share terms.
 - Tool calls shown by `--trace` (names, arguments, counts, table-of-contents paths followed by Tree, etc.):
-- Examples where retrieved information was insufficient, or was retrieved but not used in the answer:
-- Method you would adopt for this use case, your reasons, and limitations of the comparison conditions:
-- Observations and questions:
+  - Vector: 1 call, `search_materials('LoRA freeze train QLoRA add')`.
+  - Tree: 4 calls: root → `lec02-main` → section `lec02-main-s045` ("When and how to adapt the selected model") → page `lec02-main-p052`. It picked the right section from titles and opened only one page.
+  - Graph: 1 call, `search_graph('LoRA freeze train QLoRA add Lecture 02')`, seed p52.
+  - Full context: no tool calls, one model response.
+- Examples where retrieved information was insufficient, or was retrieved but not used in the answer: no method missed the evidence. Vector search retrieved p60, p61 and p47, which were not used (correctly). Tree's "4-bit NormalFloat" is a gap filled from model knowledge despite the instruction to stay within the retrieved text. Full context cited only p52 although p51 also supports the answer.
+- Method you would adopt for this use case, your reasons, and limitations of the comparison conditions: vector search. It gave a correct, grounded answer at the lowest cost (1/20 of full context) and with the fewest tokens. Tree is a good second when titles are well written, but it took 5 responses and 10 s and added an unsupported detail. Full context works at this size but costs about 20x and will hit input limits as materials grow. Limits: one question, one run each, and its evidence is concentrated on one page, which favours every method. The scopes differ (398 vs 214 pages).
+- Observations and questions: a single-page fact question does not separate the methods; a question spanning sections (see the compaction/memory question in the homework) is a better test. Question: can Tree be told to open two candidate pages before answering, to reduce answers built from one page plus model knowledge?
 
 ## Homework
 
