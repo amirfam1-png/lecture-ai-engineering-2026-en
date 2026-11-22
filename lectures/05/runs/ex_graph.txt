@@ -1,0 +1,18 @@
+[model] gemini-3.5-flash-lite
+Based on Lecture 02 (pages 51 and 52), here is how LoRA and QLoRA handle model weights and training:
+
+* **LoRA (Low-Rank Adaptation):**
+  * **What it freezes:** The original base model weights ($W$), keeping them unchanged (frozen).
+  * **What it trains:** Only a small, low-rank change represented as the product of two thin matrices (referred to as matrices $A$ and $B$). 
+
+* **QLoRA (Quantized LoRA):**
+  * **What it adds:** In addition to using LoRA's trainable low-rank matrices, QLoRA **compresses the original base model weights to 4 bits** (a coarser numerical representation). This significantly reduces the memory required to store the original model weights, allowing very large models to be fine-tuned on a single GPU (such as a standard Colab GPU).
+
+Think about how this approach drastically reduces the number of trainable parameters compared to full fine-tuning!
+
+--- trace ---
+[tool call]   search_graph({'query': 'LoRA freeze train QLoRA add Lecture 02'})
+[tool return] search_graph -> {"seeds": [{"page_id": "lec02-main-p052", "document_id": "lec02-main", "lecture": 2, "document_title": "Fundamentals of …
+[time] Answer completed in 5.13 seconds (including retrieval and embedding)
+[usage] Input 5,190 tokens / Output 241 tokens / Model responses 2
+[cost] Estimated generation API cost: $0.002160 USD (excludes embedding and index construction)

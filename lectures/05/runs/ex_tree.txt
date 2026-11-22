@@ -1,0 +1,81 @@
+[model] gemini-3.5-flash-lite
+In Lecture 02 (specifically Section 4, pages 51–52), LoRA and QLoRA are explained as Parameter-Efficient Fine-Tuning (PEFT) methods:
+
+* **What LoRA freezes:** The original model weights ($W$), keeping them completely frozen and untrained (visualized as blue).
+* **What LoRA trains:** Only a small, low-rank change (or delta) represented by thin trainable matrices ($A$ and $B$, visualized as orange), which typically make up less than 1% of the total parameters.
+* **What QLoRA adds:** It **quantizes/compresses the original frozen weights down to 4-bit precision** (using 4-bit NormalFloat), which drastically reduces the memory required to store the base model (e.g., to about one-quarter of the memory, or roughly 4 GB for a 7-billion parameter model) while keeping the same training setup for the LoRA adapters. This allows large models with billions of parameters to be fine-tuned on modest or single GPUs (like a 16 GB Colab GPU or a single 48 GB GPU). 
+
+*Hint for further exploration:* Think about why freezing the original weights and compressing them to 4 bits saves so much GPU memory during backpropagation compared to standard full fine-tuning.
+
+--- trace ---
+[tool call]   browse_tree({})
+[open table of contents] AIE2026 course materials
+  Direct children (first sentence only for pages):
+    - lec01-main · Introduction to AI Engineering and AI-Assisted Coding
+    - lec02-main · Fundamentals of Foundation Models
+    - lec03-main · AI Agents
+[tool call]   browse_tree({'node_id': 'lec02-main'})
+[open table of contents] AIE2026 course materials → Fundamentals of Foundation Models
+  Direct children (first sentence only for pages):
+    - lec02-main-p001 · Lecture 2 · translated PDF p.1 · Fundamentals of Foundation Models
+      AI Engineering Course — Lecture 2
+    - lec02-main-p002 · Lecture 2 · translated PDF p.5 · Today: inside [3] Model training — the foundation model itself
+      Recap of the previous lecture
+    - lec02-main-p003 · Lecture 2 · Japanese source p.3 · Build a chatbot and you soon encounter these difficulties
+      Today's question
+    - lec02-main-p004 · Lecture 2 · Japanese source p.4 · Today's four questions — 15 minutes each
+      Today's outline
+    - lec02-main-p005 · Lecture 2 · translated PDF p.8 · Today's topic is the model itself
+      Today's outline
+    - lec02-main-p006 · Lecture 2 · Japanese source p.6 · Six terms to know first
+      Today's outline
+    - lec02-main-s007 · LLMs select the next words probabilistically
+    - lec02-main-s019 · Provide information/select a model, adapt it, or let it think more
+    - lec02-main-s030 · A map of foundation models and how to choose
+    - lec02-main-s045 · When and how to adapt the selected model
+    - lec02-main-s063 · Supplement: recent developments and further explanation
+[tool call]   browse_tree({'node_id': 'lec02-main-s045'})
+[open table of contents] AIE2026 course materials → Fundamentals of Foundation Models → When and how to adapt the selected model
+  Direct children (first sentence only for pages):
+    - lec02-main-p045 · Lecture 2 · Japanese source p.45 · When and how should you adapt the selected model?
+      Lecture 2 — Part 4/4, approximately 15 minutes
+    - lec02-main-p046 · Lecture 2 · Japanese source p.46 · Small-scale FT changes behavior well but is weaker at adding knowledge
+      4/4: when and how to adapt the selected model
+    - lec02-main-p047 · Lecture 2 · translated PDF p.79 · Evidence and debate: RAG often works better for adding knowledge
+      4/4: when and how to adapt the selected model
+    - lec02-main-p048 · Lecture 2 · translated PDF p.80 · Continued pre-training: adding knowledge and language
+      4/4: when and how to adapt the selected model
+    - lec02-main-p049 · Lecture 2 · translated PDF p.81 · FT is also used to reduce cost
+      4/4: when and how to adapt the selected model
+    - lec02-main-p050 · Lecture 2 · Japanese source p.50 · Decision sequence: measure, separate, prompt, then Fine-Tuning
+      4/4: when and how to adapt the selected model
+    - lec02-main-p051 · Lecture 2 · Japanese source p.51 · PEFT: train only part of a model
+      4/4: when and how to adapt the selected model
+    - lec02-main-p052 · Lecture 2 · Japanese source p.52 · corresponding translated PDF p.75 · LoRA and QLoRA: adapting a large model on one GPU
+      4/4: when and how to adapt the selected model
+    - lec02-main-p053 · Lecture 2 · Japanese source p.53 · For a chatbot: what to fine-tune and what not to
+      4/4: when and how to adapt the selected model
+    - lec02-main-p054 · Lecture 2 · Japanese source p.54 · Building examples: pair questions with ideal answers
+      4/4: when and how to adapt the selected model
+    - lec02-main-p055 · Lecture 2 · Japanese source p.55 · FT pitfalls: did anything else break?
+      4/4: when and how to adapt the selected model
+    - lec02-main-p056 · Lecture 2 · Japanese source p.56 · Quiz 4: what is Fine-Tuning best suited for?
+      Quiz 4/4
+    - lec02-main-p057 · Lecture 2 · Japanese source p.57 · Quiz 4: what is Fine-Tuning best suited for? — answer
+      Quiz 4/4
+    - lec02-main-p058 · Lecture 2 · Japanese source p.58 · Checklist before Fine-Tuning
+      4/4: when and how to adapt the selected model
+    - lec02-main-p059 · Lecture 2 · Japanese source p.59 · Lecture 2 summary: four core ideas and what to do tomorrow
+      Summary
+    - lec02-main-p060 · Lecture 2 · Japanese source p.60 · Today's exercise: correct output format with QLoRA and measure the effect
+      Exercise
+    - lec02-main-p061 · Lecture 2 · Japanese source p.61 · Exercise steps and deliverables — tentative
+      Exercise
+    - lec02-main-p062 · Lecture 2 · Japanese source p.62 · Next: AI agents — today's properties are design assumptions
+      Next lecture
+[tool call]   browse_tree({'node_id': 'lec02-main-p052'})
+[open table of contents] AIE2026 course materials → Fundamentals of Foundation Models → When and how to adapt the selected model → LoRA and QLoRA: adapting a large model on one GPU
+    (Leaf page: retrieved 1238 characters of text)
+[time] Answer completed in 10.28 seconds (including retrieval and embedding)
+[usage] Input 9,442 tokens / Output 367 tokens / Model responses 5
+[cost] Estimated generation API cost: $0.003750 USD (excludes embedding and index construction)

@@ -1,0 +1,17 @@
+[model] gemini-3.5-flash-lite
+[full-context] Input: 369,491 characters
+To answer your question based on the course materials:
+
+* **What LoRA freezes and trains:** 
+  LoRA freezes the original weights (the foundation model) and trains only a small added component consisting of two small, thin matrices (low-rank adaptation matrices) [Lecture 2 · translated PDF p.75].
+
+* **What QLoRA adds:** 
+  QLoRA adds compression of the original foundation model's weights to 4 bits (using a coarser numerical representation) to further reduce memory requirements before applying the same LoRA training [Lecture 2 · translated PDF p.75].
+
+**Hint for your thinking:** 
+Think of the base model as a large, fixed textbook that you are not allowed to rewrite (frozen). Instead of editing the whole book, LoRA lets you add small sticky notes (trainable matrices) to record updates, and QLoRA even shrinks the main text to a compact paperback format to save space in memory [Lecture 2 · translated PDF p.75].
+
+--- trace ---
+[time] Answer completed in 3.25 seconds (including retrieval and embedding)
+[usage] Input 95,824 tokens / Output 212 tokens / Model responses 1
+[cost] Estimated generation API cost: $0.029277 USD (excludes embedding and index construction)
