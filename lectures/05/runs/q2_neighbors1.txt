@@ -1,0 +1,27 @@
+[model] gemini-3.5-flash-lite
+Based on Lecture 03 (pp. 39–40):
+
+* **Compaction vs. Memory across sessions:** 
+  * **Compaction** works *within a single session* (inside the context) by replacing old conversation history with a summary to fit within context limits (Lecture 3, p. 39; p. 65).
+  * **Memory across sessions** (such as external storage or memory tools) saves records externally (e.g., in files) so they can be loaded back at the start of a *subsequent* session (Lecture 3, p. 39).
+
+* **Do all daily notes go into long-term memory?**
+  * No. In the OpenClaw example (Lecture 3, p. 40), a nightly review process (dreaming) collects daily notes, drops duplicates, compares them for recurring themes, and moves *only* what passes the threshold into long-term memory (`MEMORY.md`). One-off lookups stay only in the daily notes so that long-termed memory does not bloat.
+
+--- trace ---
+[tool call]   search_materials({'query': 'compaction memory daily notes long-term memory Lecture 03'})
+[tool return] search_materials -> 11 pages (5 search hits, 6 neighbors), 8,084 characters
+    - lec03-main-p040 · Lecture 3 · translated PDF p.40 · hit, distance 0.3047
+    - lec03-main-p041 · Lecture 3 · translated PDF p.41 · neighbor +1 of lec03-main-p040
+    - lec03-main-p065 · Lecture 3 · translated PDF p.65 · hit, distance 0.3053
+    - lec03-main-p064 · Lecture 3 · translated PDF p.64 · neighbor -1 of lec03-main-p065
+    - lec03-main-p066 · Lecture 3 · translated PDF p.66 · neighbor +1 of lec03-main-p065
+    - lec03-main-p038 · Lecture 3 · translated PDF p.38 · hit, distance 0.3058
+    - lec03-main-p037 · Lecture 3 · translated PDF p.37 · neighbor -1 of lec03-main-p038
+    - lec03-main-p039 · Lecture 3 · translated PDF p.39 · hit, distance 0.3076
+    - lec03-main-p013 · Lecture 3 · translated PDF p.13 · hit, distance 0.3225
+    - lec03-main-p012 · Lecture 3 · translated PDF p.12 · neighbor -1 of lec03-main-p013
+    - lec03-main-p014 · Lecture 3 · translated PDF p.14 · neighbor +1 of lec03-main-p013
+[time] Answer completed in 5.49 seconds (including retrieval and embedding)
+[usage] Input 4,978 tokens / Output 260 tokens / Model responses 2
+[cost] Estimated generation API cost: $0.002143 USD (excludes embedding and index construction)

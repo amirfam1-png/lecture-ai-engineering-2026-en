@@ -65,7 +65,7 @@ def test_save_learning_log_rejects_empty(log_dir):
 def test_save_tool_requires_approval():
     tool = agent_module.agent._function_toolset.tools["save_learning_log"]
     assert tool.requires_approval
-    for name in ("search_glossary", "get_lecture_summary", "make_quiz"):
+    for name in ("search_materials", "make_quiz"):
         assert not agent_module.agent._function_toolset.tools[name].requires_approval
 
 

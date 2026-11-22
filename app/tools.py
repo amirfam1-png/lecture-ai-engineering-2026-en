@@ -11,6 +11,8 @@ from datetime import datetime
 from functools import cache
 from pathlib import Path
 
+from app.config import api_error_message
+
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 # Homework (Implementation): learning records are saved here, at the repository root
 LOG_DIR = Path(__file__).resolve().parent.parent / "learning_log"
@@ -146,3 +148,50 @@ def save_learning_log(lecture: int, title: str, content: str) -> str:
         encoding="utf-8",
     )
     return f"Saved: {path.relative_to(LOG_DIR.parent)}"
+
+
+def search_materials(query: str) -> str:
+    """Search the main materials for Lectures 01–03 and return relevant page text, titles, and page numbers.
+
+    Use query to specify what you want to look up.
+    """
+    from google.genai.errors import APIError
+    import sqlite3
+    from app.retrieval import search_with_neighbors
+
+    try:
+        return json.dumps({"results": search_with_neighbors(query)}, ensure_ascii=False)
+    except (ValueError, FileNotFoundError, sqlite3.Error) as e:
+        return json.dumps({"error": str(e), "results": []}, ensure_ascii=False)
+    except APIError as e:
+        return json.dumps({"error": api_error_message(e.code), "results": []}, ensure_ascii=False)
+
+
+def browse_tree(node_id: str | None = None) -> str:
+    """Return the table of contents and the first sentence of each page. Specify a page ID to get its full text.
+
+    Omit node_id on the first call. Then follow the table of contents using the returned IDs.
+    """
+    from app.retrieval import browse_tree as browse
+
+    try:
+        return json.dumps(browse(node_id), ensure_ascii=False)
+    except (ValueError, OSError) as e:
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+
+def search_graph(query: str) -> str:
+    """Search the materials, then follow adjacent pages and shared terms to return related page text and citation metadata.
+
+    Use query to specify what you want to look up.
+    """
+    import sqlite3
+    from google.genai.errors import APIError
+    from app.retrieval import search_graph as search
+
+    try:
+        return json.dumps(search(query), ensure_ascii=False)
+    except (ValueError, OSError, sqlite3.Error) as e:
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+    except APIError as e:
+        return json.dumps({"error": api_error_message(e.code)}, ensure_ascii=False)
