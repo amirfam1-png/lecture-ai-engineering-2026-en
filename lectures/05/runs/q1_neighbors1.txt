@@ -1,0 +1,257 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspaces/lec05wt/app/agent.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/workspaces/lec05wt/app/agent.py", line 275, in main
+    result = run_with_approval(target, args.question, build_model())
+  File "/workspaces/lec05wt/app/agent.py", line 165, in run_with_approval
+    result = target.run_sync(question, model=model)
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/agent/abstract.py", line 827, in run_sync
+    return _utils.run_until_complete(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.run(
+        ^^^^^^^^^
+    ...<22 lines>...
+        )
+        ^
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_utils.py", line 108, in run_until_complete
+    return _graph_run_until_complete(coro)
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_graph/_utils.py", line 116, in run_until_complete
+    return loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/codespace/.python/current/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/agent/abstract.py", line 678, in run
+    node = await agent_run.next(node)  # pyright: ignore[reportArgumentType]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/run.py", line 656, in next
+    return await self._run_node_with_hooks(node, self._stream_and_advance)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/run.py", line 571, in _run_node_with_hooks
+    result = await lifecycle(node)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/run.py", line 551, in lifecycle
+    result = await step_fn(lifecycle_node)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/run.py", line 670, in _stream_and_advance
+    return await self._advance_graph(node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/run.py", line 466, in _advance_graph
+    task = await self._graph_run.next(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_graph/graph_builder.py", line 579, in next
+    return await anext(self)
+           ^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_graph/graph_builder.py", line 556, in __anext__
+    raise self._next.error
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_graph/graph_builder.py", line 857, in _run_tracked_task
+    result = await self._run_task(t_)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_graph/graph_builder.py", line 915, in _run_task
+    output = await node.call(step_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_graph/step.py", line 253, in _call_node
+    return await node.run(GraphRunContext(state=ctx.state, deps=ctx.deps))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_agent_graph.py", line 2249, in run
+    async with self.stream(ctx):
+               ~~~~~~~~~~~^^^^^
+  File "/home/codespace/.python/current/lib/python3.14/contextlib.py", line 221, in __aexit__
+    await anext(self.gen)
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_agent_graph.py", line 2270, in stream
+    async for _event in stream:
+        pass
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/combined.py", line 649, in wrap_run_event_stream
+    async for event in stream:
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/abstract.py", line 930, in wrap_run_event_stream
+    async for event in stream:
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/abstract.py", line 930, in wrap_run_event_stream
+    async for event in stream:
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_run_context.py", line 102, in dispatch_event_stream
+    async for event in stream:
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+        yield ctx._event_stream_replacements.pop(event_id, event)  # pyright: ignore[reportPrivateUsage]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_agent_graph.py", line 227, in _with_event_stream_buffer
+    async for event in stream:
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_agent_graph.py", line 2487, in _run_stream
+    async for event in _run_stream():
+        self.model_response.workspace_ref = ctx.deps.workspace_ref
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_agent_graph.py", line 2452, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls, response_output=response_output):
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_agent_graph.py", line 2574, in _handle_tool_calls
+    async for event in process_tool_calls(
+    ...<9 lines>...
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_tool_execution.py", line 371, in process_tool_calls
+    async for event in processor.run():
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_tool_execution.py", line 504, in run
+    async for event in self._run_strategy():
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_tool_execution.py", line 1192, in _run_strategy
+    async for event in flush_pending():
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_tool_execution.py", line 1180, in flush_pending
+    async for event in self._run_function_calls(batch):
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_tool_execution.py", line 698, in _run_function_calls
+    async for event in self._call_tools(
+    ...<6 lines>...
+        yield event
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_tool_execution.py", line 903, in _call_tools
+    if event := await handle_call_or_result(item, index_by_task[item]):
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_tool_execution.py", line 831, in handle_call_or_result
+    (await coro_or_task) if inspect.isawaitable(coro_or_task) else coro_or_task.result()
+     ^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_tool_execution.py", line 733, in _call_tool
+    tool_result = await self.tool_manager.execute_tool_call(validated)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/tool_manager.py", line 781, in execute_tool_call
+    return await self._execute_tool_call_impl(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        validated, usage=self.ctx.usage, wrap_validation_errors=wrap_validation_errors
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/tool_manager.py", line 1029, in _execute_tool_call_impl
+    tool_result = await self._run_execute_hooks(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        validated, usage=usage, wrap_validation_errors=wrap_validation_errors
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/tool_manager.py", line 523, in _run_execute_hooks
+    tool_result = await cap.wrap_tool_execute(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ctx, call=call, tool_def=tool_def, args=validated.validated_args, handler=lifecycle
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/combined.py", line 824, in wrap_tool_execute
+    return await chain(args)
+           ^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/combined.py", line 1068, in wrapped
+    return await cap.wrap_tool_execute(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        _ctx_for_cap(cap, ctx), call=call, tool_def=tool_def, args=args, handler=inner
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/abstract.py", line 1184, in wrap_tool_execute
+    return await handler(args)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/combined.py", line 1068, in wrapped
+    return await cap.wrap_tool_execute(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        _ctx_for_cap(cap, ctx), call=call, tool_def=tool_def, args=args, handler=inner
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/abstract.py", line 1184, in wrap_tool_execute
+    return await handler(args)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/tool_manager.py", line 518, in lifecycle
+    tool_result = await cap.on_tool_execute_error(ctx, call=call, tool_def=tool_def, args=args, error=e)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/combined.py", line 845, in on_tool_execute_error
+    raise error
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/combined.py", line 840, in on_tool_execute_error
+    return await capability.on_tool_execute_error(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        cap_ctx, call=call, tool_def=tool_def, args=args, error=error
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/abstract.py", line 1219, in on_tool_execute_error
+    raise error
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/combined.py", line 840, in on_tool_execute_error
+    return await capability.on_tool_execute_error(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        cap_ctx, call=call, tool_def=tool_def, args=args, error=error
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/capabilities/abstract.py", line 1219, in on_tool_execute_error
+    raise error
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/tool_manager.py", line 512, in lifecycle
+    tool_result = await do_execute(args)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/tool_manager.py", line 499, in do_execute
+    return await self._raw_execute(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+        modified_validated, usage=usage, wrap_validation_errors=wrap_validation_errors
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/tool_manager.py", line 1057, in _raw_execute
+    tool_result = await self.toolset.call_tool(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/toolsets/_tool_search.py", line 446, in call_tool
+    return await self.wrapped.call_tool(name, tool_args, ctx, tool)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/toolsets/wrapper.py", line 68, in call_tool
+    return await self.wrapped.call_tool(name, tool_args, ctx, tool)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/toolsets/combined.py", line 101, in call_tool
+    return await tool.source_toolset.call_tool(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        name, tool_args, ctx, replace(tool.source_tool, tool_def=source_tool_def)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/toolsets/function.py", line 721, in call_tool
+    return await tool.call_func(tool_args, ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_function_schema.py", line 89, in call
+    return await await_maybe(await run_in_executor(function, *args, **kwargs))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_utils.py", line 199, in run_in_executor
+    return await run_sync(call_with_sync_agent_guard, abandon_on_cancel=_abandon_on_cancel.get())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/anyio/to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "/workspaces/lec05wt/.venv/lib/python3.14/site-packages/pydantic_ai/_utils.py", line 186, in call_with_sync_agent_guard
+    return func(*args, **kwargs)
+  File "/workspaces/lec05wt/app/tools.py", line 163, in search_materials
+    return json.dumps({"results": search_with_neighbors(query)}, ensure_ascii=False)
+                                  ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/workspaces/lec05wt/app/retrieval.py", line 190, in search_with_neighbors
+    return add_neighbor_pages(search(query), window)
+                              ~~~~~~^^^^^^^
+  File "/workspaces/lec05wt/app/retrieval.py", line 133, in search
+    with open_index(RAG_DB) as db:
+         ~~~~~~~~~~^^^^^^^^
+  File "/home/codespace/.python/current/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/workspaces/lec05wt/app/retrieval.py", line 121, in open_index
+    db.enable_load_extension(True)
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'sqlite3.Connection' object has no attribute 'enable_load_extension'
+[model] gemini-3.5-flash-lite
