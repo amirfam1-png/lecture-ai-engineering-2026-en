@@ -1,2 +1,21 @@
 [model] gemini-3.5-flash-lite
-The model is busy (503). Wait a little and try again.
+Based on the Lecture 3 materials:
+
+1. **Compaction vs. Memory Across Sessions:**
+   - **Compaction** compresses and summarizes history *within the loop* or inside the context (the same session), replacing old history with a summary (Lecture 3, translated PDF p. 39, 65).
+   - **Memory** (such as the memory tool or external storage) works *across sessions*, allowing information to be written out and loaded back when starting a new context (Lecture 3, translated PDF p. 13, 39).
+
+2. **Do all daily notes go into long-term memory?**
+   - No. In the OpenClaw example, an automatic nightly review process ("dreaming") collects candidates, compares them to find recurring themes, and moves *only what passes the threshold* into long-term memory (`MEMORY.md`). One-off lookups stay only in the daily notes so that long-term memory does not bloat (Lecture 3, translated PDF p. 40).
+
+--- trace ---
+[tool call]   search_materials({'query': 'compaction memory across sessions daily notes long-term memory'})
+[tool return] search_materials -> 5 pages (5 search hits, 0 neighbors), 3,929 characters
+    - lec03-main-p065 · Lecture 3 · translated PDF p.65 · hit, distance 0.3246
+    - lec03-main-p039 · Lecture 3 · translated PDF p.39 · hit, distance 0.3267
+    - lec03-main-p038 · Lecture 3 · translated PDF p.38 · hit, distance 0.3293
+    - lec03-main-p040 · Lecture 3 · translated PDF p.40 · hit, distance 0.3298
+    - lec03-main-p013 · Lecture 3 · translated PDF p.13 · hit, distance 0.3545
+[time] Answer completed in 3.44 seconds (including retrieval and embedding)
+[usage] Input 2,976 tokens / Output 246 tokens / Model responses 2
+[cost] Estimated generation API cost: $0.001508 USD (excludes embedding and index construction)

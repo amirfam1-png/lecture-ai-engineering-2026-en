@@ -1,2 +1,24 @@
 [model] gemini-3.5-flash-lite
-The model is busy (503). Wait a little and try again.
+According to Lecture 02 (pp. 51–52):
+
+* **What LoRA freezes:** The original weights of the base model ($W$), which are kept frozen and not trained.
+* **What LoRA trains:** Only small added components—specifically, two thin matrices (referred to as $A$ and $B$) that represent the low-rank change or delta.
+* **What QLoRA adds:** In addition to using LoRA, QLoRA **compresses the original weights down to 4 bits** (a coarser numerical representation), which further reduces memory requirements to about one-quarter (around 4 GB for a 7B model) while keeping the original weights frozen.
+
+--- trace ---
+[tool call]   search_materials({'query': 'LoRA freeze train QLoRA'})
+[tool return] search_materials -> 11 pages (5 search hits, 6 neighbors), 11,464 characters
+    - lec02-main-p052 · Lecture 2 · Japanese source p.52 · corresponding translated PDF p.75 · hit, distance 0.2957
+    - lec02-main-p053 · Lecture 2 · Japanese source p.53 · neighbor +1 of lec02-main-p052
+    - lec02-main-p051 · Lecture 2 · Japanese source p.51 · hit, distance 0.3039
+    - lec02-main-p050 · Lecture 2 · Japanese source p.50 · neighbor -1 of lec02-main-p051
+    - lec02-main-p060 · Lecture 2 · Japanese source p.60 · hit, distance 0.3251
+    - lec02-main-p059 · Lecture 2 · Japanese source p.59 · neighbor -1 of lec02-main-p060
+    - lec02-main-p047 · Lecture 2 · translated PDF p.79 · hit, distance 0.3459
+    - lec02-main-p046 · Lecture 2 · Japanese source p.46 · neighbor -1 of lec02-main-p047
+    - lec02-main-p048 · Lecture 2 · translated PDF p.80 · neighbor +1 of lec02-main-p047
+    - lec02-main-p061 · Lecture 2 · Japanese source p.61 · hit, distance 0.3467
+    - lec02-main-p062 · Lecture 2 · Japanese source p.62 · neighbor +1 of lec02-main-p061
+[time] Answer completed in 7.67 seconds (including retrieval and embedding)
+[usage] Input 5,578 tokens / Output 169 tokens / Model responses 2
+[cost] Estimated generation API cost: $0.002096 USD (excludes embedding and index construction)
